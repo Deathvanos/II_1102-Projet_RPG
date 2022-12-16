@@ -71,7 +71,7 @@ public class Utils {
     // Dico pour récuperer la taille des images voulu
     public static final Map<String, String> MusiqueSource  = new HashMap<String, String>() {{
         // Heros
-        put("Menu", "musiques/MrKey_Halo_LMK.mp3");
+        put("Menu", "musiques/MrKey_Retro-Gaming-Level-Four_LMK.mp3");
         put("Game", "musiques/MrKEY_Play_LMK.mp3");
         put("Boss", "musiques/MrKey_Retro-Gaming_Big-Boss-One_LMK.mp3");
         put("Win", "musiques/MrKEY_Trailer-01_LMK.mp3");
