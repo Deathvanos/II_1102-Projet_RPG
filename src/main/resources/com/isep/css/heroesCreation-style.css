@@ -1,0 +1,19 @@
+
+
+
+#labelTitle {
+    -fx-font-size: 48px;
+}
+#labelSubTitle {
+    -fx-font-size: 32px;
+}
+
+#labelTitle3 {
+    -fx-font-size: 32px;
+}
+
+#labelError {
+   /* -fx-alignment: "center";*/
+    -fx-text-fill: linear-gradient(to bottom right, rgb(255, 120, 10), rgb(255, 200, 10));
+}
+

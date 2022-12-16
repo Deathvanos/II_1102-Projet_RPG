@@ -1,0 +1,35 @@
+
+
+
+#labelManche {
+    -fx-font-size: 32px;
+    -fx-alignment: "bottom";
+}
+
+#labelWave {
+    -fx-font-size: 24px;
+    -fx-alignment: "bottom";
+
+}
+
+#labelOrderAttack {
+    -fx-font-size: 18px;
+    -fx-alignment: "left";
+}
+
+#labelBulle {
+    -fx-font-size: 20px;
+    -fx-alignment: "center";
+    -fx-text-fill: linear-gradient(to bottom right, rgb(255, 200, 10), rgb(80, 200, 0));
+}
+
+
+
+#labelHeros {
+    -fx-font-size: 12px;
+    -fx-text-fill: linear-gradient(to bottom right, rgb(255, 120, 10), rgb(255, 200, 10));
+}
+
+
+
+

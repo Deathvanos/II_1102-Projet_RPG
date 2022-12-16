@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="stage" fx:id="stage" onMouseEntered="#autoResize" onMouseExited="#autoResize" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.isep.controllers.GameController">
+   <children>
+      <ImageView fx:id="background" fitHeight="500.0" fitWidth="900.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/Backgrounds/fantasy/Battleground12.png" />
+         </image>
+      </ImageView>
+      <AnchorPane fx:id="screenElements" prefHeight="500.0" prefWidth="900.0">
+         <children>
+            <Button id="buttonBack" layoutX="742.0" layoutY="20.0" mnemonicParsing="false" onAction="#onBackButtonClick" text="Déclarer la défaite" />
+            <Label id="labelManche" fx:id="labelRound" alignment="BOTTOM_CENTER" contentDisplay="BOTTOM" layoutX="14.0" layoutY="20.0" text="Manche 1" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font size="48.0" />
+               </font>
+            </Label>
+            <Label id="labelWave" fx:id="labelWave" alignment="BOTTOM_CENTER" contentDisplay="BOTTOM" layoutX="220.0" layoutY="26.0" text="Vague 3" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Label id="labelOrderAttack" fx:id="passageOrder" layoutX="3.0" layoutY="464.0" maxWidth="880.0" prefWidth="880.0" text="Ordre du tour :" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <VBox id="labelHeros" fx:id="partHeroes" alignment="CENTER" layoutY="230.0">
+               <children>
+                  <HBox id="partHerosStage1" alignment="CENTER">
+                     <children>
+                        <VBox id="hero6" fx:id="hero6" alignment="CENTER">
+                           <children>
+                              <ImageView id="hero6Img" fx:id="hero6Img" fitHeight="100.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/shadow.png" />
+                                 </image>
+                              </ImageView>
+                              <Label id="labelHeros" fx:id="hero6Info" contentDisplay="CENTER" text="Hero 1 - HP =5" />
+                           </children>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox id="hero3" alignment="CENTER">
+                           <children>
+                              <ImageView id="labelHeros" fx:id="hero3Img" fitHeight="100.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                 <image>
+                                    <Image url="@../images/shadow.png" />
+                                 </image>
+                              </ImageView>
+                              <Label id="labelHeros" fx:id="hero1Info1115" contentDisplay="CENTER" />
+                           </children>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox id="partHerosStage2" alignment="CENTER">
+                     <children>
+                        <VBox id="hero4" alignment="CENTER">
+                           <children>
+                              <ImageView id="hero4Img" fx:id="hero1Img1113" fitHeight="100.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                 <image>
+                                    <Image url="@../images/shadow.png" />
+                                 </image>
+                              </ImageView>
+                              <Label id="labelHeros" fx:id="hero1Info1113" contentDisplay="CENTER" />
+                           </children>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox id="hero1" alignment="CENTER">
+                           <children>
+                              <ImageView id="hero1Img" fx:id="hero1Img" fitHeight="100.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                 <image>
+                                    <Image url="@../images/shadow.png" />
+                                 </image>
+                              </ImageView>
+                              <Label id="labelHeros" fx:id="hero1Info" contentDisplay="CENTER" />
+                           </children>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox id="partHerosStage3" alignment="CENTER">
+                     <children>
+                        <VBox id="labelHeros" alignment="CENTER">
+                           <children>
+                              <ImageView id="hero5Img" fx:id="hero1Img1117" fitHeight="100.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                 <image>
+                                    <Image url="@../images/shadow.png" />
+                                 </image>
+                              </ImageView>
+                              <Label id="heroTurn" fx:id="hero5Info" contentDisplay="CENTER" />
+                           </children>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox id="labelHeros" alignment="CENTER">
+                           <children>
+                              <ImageView id="hero2Img" fx:id="hero2Img" fitHeight="100.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                                 <image>
+                                    <Image url="@../images/shadow.png" />
+                                 </image>
+                              </ImageView>
+                              <Label id="heroTurn" fx:id="hero2Info" contentDisplay="CENTER" />
+                           </children>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox id="partEnnemy" fx:id="partEnnemy" alignment="CENTER" layoutX="621.0" layoutY="230.0">
+               <children>
+                  <HBox id="partEnnemyStage1" alignment="CENTER">
+                     <children>
+                        <VBox id="ennemy3" alignment="CENTER">
+                           <children>
+                              <ImageView id="hero1Img" fx:id="hero1Img11141" fitHeight="100.0" fitWidth="75.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/shadow.png" />
+                                 </image>
+                              </ImageView>
+                              <Label id="labelHeros" fx:id="hero1Info11141" contentDisplay="CENTER" text="Mechant 1 - hp 5" />
+                           </children>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox id="ennemy6" alignment="CENTER">
+                           <children>
+                              <ImageView id="hero1Img" fx:id="hero1Img11151" fitHeight="100.0" fitWidth="75.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" visible="false">
+                                 <image>
+                                    <Image url="@../images/shadow.png" />
+                                 </image>
+                              </ImageView>
+                              <Label id="labelHeros" fx:id="hero1Info11151" contentDisplay="CENTER" />
+                           </children>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox id="partEnnemyStage2" alignment="CENTER">
+                     <children>
+                        <VBox id="ennemy1" alignment="CENTER">
+                           <children>
+                              <ImageView id="hero1Img" fx:id="hero1Img11131" fitHeight="100.0" fitWidth="75.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" visible="false">
+                                 <image>
+                                    <Image url="@../images/shadow.png" />
+                                 </image>
+                              </ImageView>
+                              <Label id="labelHeros" fx:id="hero1Info11131" contentDisplay="CENTER" />
+                           </children>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox id="ennemy4" alignment="CENTER">
+                           <children>
+                              <ImageView id="hero1Img" fx:id="hero1Img11161" fitHeight="100.0" fitWidth="75.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" visible="false">
+                                 <image>
+                                    <Image url="@../images/shadow.png" />
+                                 </image>
+                              </ImageView>
+                              <Label id="labelHeros" fx:id="hero1Info11161" contentDisplay="CENTER" />
+                           </children>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox id="partEnnemyStage3" alignment="CENTER">
+                     <children>
+                        <VBox id="ennemy2" alignment="CENTER">
+                           <children>
+                              <ImageView id="hero1Img" fx:id="hero1Img11171" fitHeight="100.0" fitWidth="75.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" visible="false">
+                                 <image>
+                                    <Image url="@../images/shadow.png" />
+                                 </image>
+                              </ImageView>
+                              <Label id="heroTurn" fx:id="hero1Info11171" contentDisplay="CENTER" />
+                           </children>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox id="ennemy5" alignment="CENTER">
+                           <children>
+                              <ImageView id="hero1Img" fx:id="hero1Img11121" fitHeight="100.0" fitWidth="75.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" visible="false">
+                                 <image>
+                                    <Image url="@../images/shadow.png" />
+                                 </image>
+                              </ImageView>
+                              <Label id="labelHeros" fx:id="hero1Info11121" contentDisplay="CENTER" />
+                           </children>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+            <AnchorPane fx:id="msgActions" layoutX="295.0" layoutY="59.0" prefHeight="200.0" prefWidth="200.0" visible="false">
+               <children>
+                  <ImageView fitHeight="173.0" fitWidth="313.0" layoutX="-4.0" layoutY="-12.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true">
+                     <image>
+                        <Image url="@../images/popup_2.png" />
+                     </image>
+                  </ImageView>
+                  <Label id="labelBulle" contentDisplay="CENTER" layoutX="30.0" layoutY="1.0" text="Que souhaite faire" textFill="#130404">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="15.0" layoutY="65.0" mnemonicParsing="false" onAction="#actionAttk" text="Attaquer" />
+                  <Button layoutX="113.0" layoutY="65.0" mnemonicParsing="false" onAction="#actionDef" text="Defense" />
+                  <Button layoutX="207.0" layoutY="65.0" mnemonicParsing="false" onAction="#actionItem" text="Use Item" />
+                  <Label id="labelBulle" fx:id="lableActionBox" layoutX="105.0" layoutY="33.0" text="Hero 1" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="msgAttack" layoutX="300.0" layoutY="60.0" prefHeight="200.0" prefWidth="200.0" visible="false">
+               <children>
+                  <ImageView fitHeight="155.0" fitWidth="268.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true">
+                     <image>
+                        <Image url="@../images/popup_2.png" />
+                     </image>
+                  </ImageView>
+                  <Label id="labelBulle" contentDisplay="CENTER" layoutX="14.0" layoutY="14.0" text="Selection de la cible" textFill="#130404">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="26.0" layoutY="65.0" mnemonicParsing="false" onAction="#actionBox" text="Retour" />
+                  <Button layoutX="173.0" layoutY="65.0" mnemonicParsing="false" onAction="#validationAttack" text="Valider" />
+                  <Label id="labelBulle" fx:id="labelAttkBox" layoutX="120.0" layoutY="41.0" text="..." />
+                  <ImageView fitHeight="189.0" fitWidth="383.0" layoutX="-47.0" layoutY="116.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" rotate="180.0">
+                     <image>
+                        <Image url="@../images/popup_2.png" />
+                     </image>
+                  </ImageView>
+                  <VBox fx:id="lstBtnMechants" layoutX="-31.0" layoutY="171.0" prefHeight="120.0" prefWidth="350.0">
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#enemyChoose" text="mechant1" visible="false" />
+                              <Button mnemonicParsing="false" onAction="#enemyChoose" text="mechant2" visible="false" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#enemyChoose" text="mechant4" visible="false" />
+                              <Button mnemonicParsing="false" onAction="#enemyChoose" text="mechant5" visible="false" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#enemyChoose" text="mechant5" visible="false" />
+                              <Button mnemonicParsing="false" onAction="#enemyChoose" text="mechant6" visible="false" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="msgDef" layoutX="304.0" layoutY="69.0" prefHeight="200.0" prefWidth="200.0" visible="false">
+               <children>
+                  <ImageView fitHeight="155.0" fitWidth="313.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true">
+                     <image>
+                        <Image url="@../images/popup_2.png" />
+                     </image>
+                  </ImageView>
+                  <Label id="labelBulle" contentDisplay="CENTER" layoutX="32.0" layoutY="14.0" text="Reduction des dégats" textFill="#130404">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="60.0" layoutY="65.0" mnemonicParsing="false" onAction="#actionBox" text="Retour" />
+                  <Button layoutX="196.0" layoutY="65.0" mnemonicParsing="false" onAction="#validationDefense" text="Valider" />
+                  <Label id="labelBulle" fx:id="labelDefBox" layoutX="143.0" layoutY="38.0" text="50" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="msgItem" layoutX="315.0" layoutY="69.0" prefHeight="200.0" prefWidth="200.0" visible="false">
+               <children>
+                  <AnchorPane layoutX="-1.0" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="155.0" fitWidth="383.0" layoutX="-54.0" layoutY="128.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" rotate="180.0">
+                           <image>
+                              <Image url="@../images/popup_2.png" />
+                           </image>
+                        </ImageView>
+                        <VBox fx:id="lstBtnItems" layoutX="-38.0" layoutY="178.0" prefHeight="90.0" prefWidth="350.0">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#itemChoose" text="Obj1" visible="false" />
+                                    <Button mnemonicParsing="false" onAction="#itemChoose" text="Obj2" visible="false" />
+                                    <Button mnemonicParsing="false" onAction="#itemChoose" text="Obj3" visible="false" />
+                                    <Button mnemonicParsing="false" onAction="#itemChoose" text="Obj4" visible="false" />
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#itemChoose" text="Obj6" visible="false" />
+                                    <Button mnemonicParsing="false" onAction="#itemChoose" text="Obj7" visible="false" />
+                                    <Button mnemonicParsing="false" onAction="#itemChoose" text="Obj8" visible="false" />
+                                    <Button mnemonicParsing="false" onAction="#itemChoose" text="Obj5" visible="false" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+                  <ImageView fitHeight="155.0" fitWidth="268.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true">
+                     <image>
+                        <Image url="@../images/popup_2.png" />
+                     </image>
+                  </ImageView>
+                  <Label id="labelBulle" contentDisplay="CENTER" layoutX="47.0" layoutY="12.0" text="User d'un objet" textFill="#130404">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label id="labelBulle" fx:id="labelItemBox" alignment="CENTER" contentDisplay="CENTER" layoutX="12.0" layoutY="41.0" text="..." />
+                  <Button layoutX="36.0" layoutY="65.0" mnemonicParsing="false" onAction="#actionBox" text="Retour" />
+                  <Button layoutX="155.0" layoutY="65.0" mnemonicParsing="false" onAction="#validationItem" text="Valider" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+   <stylesheets>
+      <URL value="@../css/common-style.css" />
+      <URL value="@../css/game-style.css" />
+   </stylesheets>
+</AnchorPane>

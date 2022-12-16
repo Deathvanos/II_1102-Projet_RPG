@@ -1,0 +1,15 @@
+
+#labelTitle {
+    -fx-font-size: 48px;
+}
+#labelSubTitle {
+    -fx-font-size: 28px;
+}
+
+
+.slider {
+    -fx-font-size: 32px;
+    -fx-font: bold 28pt "Rockwell Extra Bold";
+}
+
+

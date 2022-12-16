@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="stage" onMouseEntered="#autoResize" onMouseExited="#autoResize" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.isep.controllers.RewardController">
+   <children>
+      <ImageView fx:id="background" fitHeight="500.0" fitWidth="900.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/Backgrounds/fantasy/Battleground32.png" />
+         </image>
+      </ImageView>
+      <AnchorPane fx:id="screenElements" prefHeight="500.0" prefWidth="900.0">
+         <children>
+            <ImageView fx:id="heroImg" fitHeight="100.0" fitWidth="75.0" layoutX="481.0" layoutY="371.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/shadow.png" />
+               </image>
+            </ImageView>
+            <AnchorPane layoutX="43.0" layoutY="45.0">
+               <children>
+                  <ImageView fx:id="h" fitHeight="450.0" fitWidth="400.0" layoutY="-32.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" rotate="-90.0">
+                     <image>
+                        <Image url="@../images/popup_1.png" />
+                     </image>
+                  </ImageView>
+                  <Label id="labelBulle" layoutY="17.0" text="J'ai réussi à survivre," />
+                  <Label id="labelBulle" layoutX="11.0" layoutY="41.0" text="je dois me reposer " />
+                  <Button fx:id="btn1Attack" layoutX="47.0" layoutY="101.0" mnemonicParsing="false" onAction="#upgradeChoose" text="Increase damage" />
+                  <Button fx:id="btn2Protection" layoutX="40.0" layoutY="151.0" mnemonicParsing="false" onAction="#upgradeChoose" text="Increase protection" />
+                  <Button fx:id="btn3FoodPower" layoutX="-2.0" layoutY="200.0" mnemonicParsing="false" onAction="#upgradeChoose" text="Increase consumable efficiency" />
+                  <Button fx:id="btn4Stuff" layoutX="60.0" layoutY="250.0" mnemonicParsing="false" onAction="#upgradeChoose" text="Increase Stuff" />
+                  <Button fx:id="btn5Other" layoutX="10.0" layoutY="295.0" mnemonicParsing="false" onAction="#upgradeChoose" text="hunter and spellcaster class" />
+                  <Label id="labelBulle" fx:id="lableName" layoutX="2.0" layoutY="342.0" text="Signé : xj le mitho" />
+                  <Label id="labelBulle" layoutX="29.0" layoutY="65.0" text="mais que faire ?" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+   <stylesheets>
+      <URL value="@../css/common-style.css" />
+      <URL value="@../css/reward-style.css" />
+   </stylesheets>
+</AnchorPane>

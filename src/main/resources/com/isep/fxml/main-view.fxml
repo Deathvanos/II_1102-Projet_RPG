@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="stage" fx:id="stage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#autoResize" onMouseExited="#autoResize" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.isep.controllers.MainController">
+   <children>
+      <ImageView fx:id="background" fitHeight="510.0" fitWidth="910.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Backgrounds/sky/Clouds7.png" />
+         </image>
+      </ImageView>
+      <AnchorPane id="screenElements" fx:id="screenElements" prefHeight="500.0" prefWidth="900.0">
+         <children>
+            <VBox alignment="CENTER" layoutX="185.0" layoutY="79.0">
+               <children>
+                  <Label id="labelTitle" alignment="CENTER" text="Mini RPG Lite 3000">
+                     <padding>
+                        <Insets bottom="40.0" />
+                     </padding>
+                     <font>
+                        <Font name="Rockwell Extra Bold" size="64.0" />
+                     </font>
+                  </Label>
+                  <Button id="buttonPlay" mnemonicParsing="false" onAction="#on_Start_ButtonClick" text="Play">
+                     <VBox.margin>
+                        <Insets top="70.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+            <VBox alignment="BOTTOM_CENTER" layoutX="142.0" layoutY="357.0">
+               <children>
+                  <Label id="labelSubTitle" alignment="CENTER" text="Choix du nombre de héros">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Rockwell" size="24.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding>
+                  </Label>
+                  <Slider id="sliderNbHeros" fx:id="sliderNbHeros" blockIncrement="1.0" majorTickUnit="1.0" max="6.0" min="1.0" minorTickCount="0" prefWidth="434.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0">
+                     <VBox.margin>
+                        <Insets left="90.0" right="90.0" />
+                     </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="MOVE" />
+                     </cursor>
+                  </Slider>
+               </children>
+            </VBox>
+            <Button layoutX="416.0" layoutY="308.0" mnemonicParsing="false" onAction="#on_Credit_ButtonClick" text="Crédits" />
+         </children>
+      </AnchorPane>
+   </children>
+   <stylesheets>
+      <URL value="@../css/common-style.css" />
+      <URL value="@../css/main-style.css" />
+   </stylesheets>
+</AnchorPane>

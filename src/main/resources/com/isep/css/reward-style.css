@@ -1,0 +1,13 @@
+
+
+
+
+#labelBulle {
+    -fx-font-size: 20px;
+   /* -fx-alignment: "center";*/
+    -fx-text-fill: linear-gradient(to bottom right, rgb(255, 200, 10), rgb(80, 200, 0));
+}
+
+
+
+
