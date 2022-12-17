@@ -3,4 +3,4 @@
 ### Auteur : Charles_Mailley
 ISEP - A1 - G7C  
 Date de rendu  : 17/12/2022  
-Version interface egraphique avec Maven
+Version interface graphique avec Maven
