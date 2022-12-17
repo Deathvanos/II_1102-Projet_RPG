@@ -1,3 +1,8 @@
+//***** II.1102 – Algorithmique et Programmation - Projet : Mini RPG Lite 3000 *****
+// ISEP - A1 - G7C
+// Auteur : Charles_Mailley
+// Date de rendu  : 17/12/2022
+
 package com.isep.rpg;
 
 public abstract class Combatant {
@@ -18,33 +23,17 @@ public abstract class Combatant {
         else if (damage < 0) {this.healthPoint -= damage;}
     }
 
-    public void setWeapon(Weapon weapon) {this.weapon = weapon;}
-
-    // Classe abstraite
+    // Abstract Class
     public abstract void fight(Combatant combatant);
     public abstract int getDamage();
     public abstract void addProtection();
 
-    // Accesseurs GET
+    // GETTER
     public String getName() {return this.name;}
     public int getHealthPoint() {return this.healthPoint;}
-    public int getProtection() {return this.protection;}
-
-
     public Weapon getWeapon() {return this.weapon;}
 
-
-    // http://www.java2s.com/Code/Java/Reflection/Gettheclassnamewithorwithoutthepackage.htm
-    public static String getClassName(Class c) {
-        String className = c.getName();
-        int firstChar;
-        firstChar = className.lastIndexOf('.') + 1;
-        if (firstChar > 0) {
-            className = className.substring(firstChar);
-        }
-        return className;
-    }
-
-
+    // SETTER
+    public void setWeapon(Weapon weapon) {this.weapon = weapon;}
 
 }

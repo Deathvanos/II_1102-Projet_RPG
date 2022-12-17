@@ -1,29 +1,46 @@
+//***** II.1102 – Algorithmique et Programmation - Projet : Mini RPG Lite 3000 *****
+// ISEP - A1 - G7C
+// Auteur : Charles_Mailley
+// Date de rendu  : 17/12/2022
+
 package com.isep.rpg;
 
-import com.isep.rpg.food.Lembdas;
-import com.isep.rpg.food.Pain;
-
+import com.isep.rpg.food.*;
 import java.util.ArrayList;
 
 public abstract class Hero extends Combatant {
 
-    // Creation du sac d'objet
     private final ArrayList<Consumable> sacHero = new ArrayList<>();
     protected Armor armure;
     private double efficaciteConso = 1.0;
-
 
     public Hero(String n, int hp) {
         super(n, hp);
     }
 
+    // Abstract Class
+    public abstract String getPrintMunition();
+    public abstract void iniSac();
+
+    // GETTER
+    public ArrayList<Consumable> getSacHero() {return this.sacHero;}
+    public Armor getArmure() {return this.armure;}
+
+    // SETTER
     public void setArmure(Armor armure) {
         this.armure = armure;
     }
 
-    public Armor getArmure() {return this.armure;}
+    public void ajoutObjettoSac(Consumable conso) {
+        this.sacHero.add(conso);
+    }
 
-    public double getEfficaciteConso() {return this.efficaciteConso;}
+    @Override
+    public void addProtection() {
+        super.protection = this.armure.getProtection();
+    }
+
+    public void looseProctection() {super.protection = 0;}
 
 
     public void rempliSacBasique() {
@@ -32,11 +49,7 @@ public abstract class Hero extends Combatant {
         this.ajoutObjettoSac(new Pain());
         this.ajoutObjettoSac(new Lembdas());
     }
-    public void ajoutObjettoSac(Consumable conso) {
-        this.sacHero.add(conso);
-    }
 
-    public ArrayList<Consumable> getSacHero() {return this.sacHero;}
     public void useItem(int index) {
         Consumable conso = this.sacHero.get(index);
         int point;
@@ -55,10 +68,6 @@ public abstract class Hero extends Combatant {
         this.sacHero.remove(index);
     }
 
-
-    public abstract String getPrintMunition();
-    public abstract void iniSac();
-
     public void upgradeHero(int numChoose) {
         switch (numChoose) {
             case 1 -> {
@@ -67,31 +76,14 @@ public abstract class Hero extends Combatant {
                 int newDPS = super.weapon.getDps() + super.weapon.getDps()*10/100;
                 super.weapon.setDps(newDPS);
             }
-            case 2 -> {
-                // Augmentation de la protection de l'armure
+            case 2 -> // Augmentation de la protection de l'armure
                 // On ajout +20 en defence
-                this.armure.setProtection(this.armure.getProtection()+20);
-            }
-            case 3 -> {
-                // Augmentation du multiplicateur d'efficacité des Potions et Food
-                this.efficaciteConso += 0.25;
-            }
-            case 4 -> {
-                // Remet les elements de base contenu dans le sac
-                this.iniSac();
-            }
-
+                    this.armure.setProtection(this.armure.getProtection()+20);
+            case 3 -> // Augmentation du multiplicateur d'efficacité des Potions et Food
+                    this.efficaciteConso += 0.25;
+            case 4 -> // Remet les elements de base contenu dans le sac
+                    this.iniSac();
         }
     }
-
-
-
-    @Override
-    public void addProtection() {
-        super.protection = this.armure.getProtection();
-    }
-    public void looseProctection() {super.protection = 0;}
-
-
 
 }

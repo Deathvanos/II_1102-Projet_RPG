@@ -1,3 +1,8 @@
+//***** II.1102 – Algorithmique et Programmation - Projet : Mini RPG Lite 3000 *****
+// ISEP - A1 - G7C
+// Auteur : Charles_Mailley
+// Date de rendu  : 17/12/2022
+
 package com.isep.controllers;
 
 import com.isep.MainApplication;
@@ -11,26 +16,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
-
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class HeroesCreationController implements Initializable {
+public class HeroesCreationController extends ControlleurBase implements Initializable {
 
-    @FXML
-    private AnchorPane stage, screenElements;
-    @FXML
-    private ImageView background;
-    private boolean isInit = false;
-
-    @FXML
+     @FXML
     private Label infoNbHeroe;
     @FXML
     private ImageView warrior, hunter, mage, healer;
@@ -45,20 +39,14 @@ public class HeroesCreationController implements Initializable {
     // Attribut de la class
     private String HeroChoose;
 
-
     // Constructeur
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
       //  playMedia();
-
         infoNbHeroe.setText("Héros " + Game.option.getNbHeroesCreate() + "/" + Game.option.getNbHeroes());
         if (Game.option.getNbHeroesCreate() >= Game.option.getNbHeroes()) next.setText("Jouer");
         else next.setText("Suivant");
     }
-
-
-
 
     /* Deux fonctions pour faciliter la création d'images*/
     private void defaultImage() throws IOException {
@@ -67,7 +55,6 @@ public class HeroesCreationController implements Initializable {
         mage.setImage(Utils.setAnImage("images/HeroesCreation/MageIdle.png"));
         healer.setImage(Utils.setAnImage("images/HeroesCreation/HealerIdle.png"));
     }
-
 
     /* Quand on selectionne une image */
     @FXML
@@ -135,9 +122,6 @@ public class HeroesCreationController implements Initializable {
         else healer.setImage(Utils.setAnImage("images/HeroesCreation/HealerClic.png"));
     }
 
-
-
-
     @FXML
     protected void onPlayButtonClick() throws IOException {
         if (this.HeroChoose != null & !Objects.equals(nameHeroe.getText(), "")) {
@@ -168,27 +152,4 @@ public class HeroesCreationController implements Initializable {
         ((Stage) stage.getScene().getWindow()).setScene(scene);
     }
 
-
-    @FXML
-    protected void autoResize(){
-        if(stage.getWidth()+5 != background.getFitWidth() | stage.getHeight()+5 != background.getFitHeight()) {
-            // Parametre initial non possible dans la fonction init
-            if (!this.isInit) {
-                background.setPreserveRatio(false);
-                ((Stage) stage.getScene().getWindow()).setMinWidth(900);
-                ((Stage) stage.getScene().getWindow()).setMinHeight(500);
-                this.isInit = true;
-            }
-            // Aggrandi l'image au max
-            background.setFitWidth(stage.getWidth());
-            background.setFitHeight(stage.getHeight());
-            // Remet à peu près les elements au centre
-            double midScreenX = stage.getWidth()/2;
-            double midScreenY = stage.getHeight()/2;
-            int AnchorPointX = (int) (midScreenX - screenElements.getWidth()/2);
-            int AnchorPointY = (int) (midScreenY - screenElements.getHeight()/2);
-            screenElements.setLayoutX(AnchorPointX);
-            screenElements.setLayoutY(AnchorPointY);
-        }
-    }
 }

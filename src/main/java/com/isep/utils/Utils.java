@@ -1,13 +1,12 @@
+//***** II.1102 – Algorithmique et Programmation - Projet : Mini RPG Lite 3000 *****
+// ISEP - A1 - G7C
+// Auteur : Charles_Mailley
+// Date de rendu  : 17/12/2022
+
 package com.isep.utils;
 
 import com.isep.MainApplication;
 import javafx.scene.image.Image;
-
-import javafx.scene.media.AudioClip;
-import javafx.scene.media.MediaPlayer;
-import javafx.scene.media.Media;
-
-import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
@@ -46,7 +45,6 @@ public class Utils {
         put("Hunter", "images/Heroes/Hunter-Idle.gif");
         put("Mage", "images/Heroes/Mage-Idle.gif");
         put("Healer", "images/Heroes/Healer-Idle.gif");
-
         // Ennemy
         put("Fallen_Angel", "images/Mechants/Idle-Fallen_Angels.gif");
         put("Goblin", "images/Mechants/Idle-Goblin.gif");
@@ -67,7 +65,6 @@ public class Utils {
 
     }};
 
-
     // Dico pour récuperer la taille des images voulu
     public static final Map<String, String> MusiqueSource  = new HashMap<String, String>() {{
         // Heros
@@ -76,18 +73,14 @@ public class Utils {
         put("Boss", "musiques/MrKey_Retro-Gaming_Big-Boss-One_LMK.mp3");
         put("Win", "musiques/MrKEY_Trailer-01_LMK.mp3");
         put("Loose", "musiques/MY-SAD-SONG_Christophe_Espern.mp3");
-
     }};
-
-
-
 
     public static Image setAnImage(String path) throws IOException {
         return new Image(Objects.requireNonNull(MainApplication.class.getResource(path)).openStream());
     }
 
-
     // http://www.java2s.com/Code/Java/Reflection/Gettheclassnamewithorwithoutthepackage.htm
+    // A remplacer par maclass isInstanceOf instanceDeClass
     public static String getClassName(Class c) {
         String className = c.getName();
         int firstChar;

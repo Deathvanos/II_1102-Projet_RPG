@@ -1,3 +1,8 @@
+//***** II.1102 – Algorithmique et Programmation - Projet : Mini RPG Lite 3000 *****
+// ISEP - A1 - G7C
+// Auteur : Charles_Mailley
+// Date de rendu  : 17/12/2022
+
 package com.isep.rpg;
 
 import com.isep.MainApplication;
@@ -8,7 +13,6 @@ import com.isep.rpg.enemy.*;
 import com.isep.utils.Utils;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-
 import java.net.URL;
 import java.util.*;
 
@@ -21,12 +25,10 @@ public class Game {
     public static Game option;
     // L'instantiation de la classe Game devient impossible
     private Game() {}
-    // Création de l'unique Game - une fois créé, il ne se passera plus rien
+    // Création de l'unique Game
     public static void playGame() {
-        /* A chaque fois qu''on retourne sur le menu principal, on remet les options du jeu à zero*/
-       // if (GameTest.option == null) {
+        // A chaque fois qu''on retourne sur le menu principal, on remet les options du jeu à zero
         Game.option = new Game();
-       // }
     }
 
     /* _________________ */
@@ -63,8 +65,6 @@ public class Game {
     public void setNbHeroes(int nbHeroes) {this.nbHeroes = nbHeroes;}
     public void resetNumWave() {this.numWave=1;}
 
-
-
     /* ______ */
     /* Adders */
     /* ______ */
@@ -73,7 +73,9 @@ public class Game {
     public void addWave() {this.numWave++;}
     public void addRound() {this.numRound++;}
 
-
+    /* ______ */
+    /* Methodes de Class Game */
+    /* ______ */
     public void addHeros(String NameClass, String nameHero) {
         switch (NameClass) {
             case "Warrior" -> {
@@ -102,14 +104,6 @@ public class Game {
             }
         }
     }
-
-
-
-
-
-    /* _______ */
-    /* Methodes de class */
-    /* _______ */
 
     public void createEnemyWaveArray() {
         // Les méchants sont selectionné aléatoirement mais ont des armes prédéfinis
@@ -149,9 +143,6 @@ public class Game {
         }
     }
 
-
-
-
     public void defineRunningOrder(){
         // Concate les deux liste de combattants
         this.listCombatants = (ArrayList<Combatant>) this.listHeroes.clone();
@@ -159,19 +150,6 @@ public class Game {
         // trie au hasars cette liste
         Collections.shuffle(this.listCombatants);
     }
-
-
-    // http://www.java2s.com/Code/Java/Reflection/Gettheclassnamewithorwithoutthepackage.htm
-    public static String getClassName(Class c) {
-        String className = c.getName();
-        int firstChar;
-        firstChar = className.lastIndexOf('.') + 1;
-        if (firstChar > 0) {
-            className = className.substring(firstChar);
-        }
-        return className;
-    }
-
 
     public String textPassageOrder() {
         // [Warriror(toto) - scelteter(1)]
@@ -193,18 +171,11 @@ public class Game {
         return txt.substring(0, txt.length() - 1).concat("]");
     }
 
-
-
-
     public void actionHeroAttaque(Combatant cbt, Combatant cible) {
         cbt.fight(cible);
         // Verification de l'etat de santé de la cible
         verifDeath(cible, "Mechant");
     }
-
-
-
-
 
     public void actionEnemy(Combatant cbt) {
         // Choix d'un nombre aleatoire entre 0 et this.listHeros.length
@@ -218,7 +189,6 @@ public class Game {
         verifDeath(cible, "Gentil");
     }
 
-
     public void verifDeath(Combatant cible, String camp) {
         // Si l'attakant est mort
         if (cible.getHealthPoint() <= 0) {
@@ -227,7 +197,6 @@ public class Game {
             campList.remove(cible);
         }
     }
-
 
     public ArrayList<Combatant> hisCibleEneny(Combatant cbt) {
         if (!Utils.getClassName(cbt.getClass()).equals("Healer"))
@@ -258,11 +227,21 @@ public class Game {
         );
     }
 
+    // http://www.java2s.com/Code/Java/Reflection/Gettheclassnamewithorwithoutthepackage.htm
+    // A remplacer par maclass isInstanceOf instanceDeClass
+    public static String getClassName(Class c) {
+        String className = c.getName();
+        int firstChar;
+        firstChar = className.lastIndexOf('.') + 1;
+        if (firstChar > 0) {
+            className = className.substring(firstChar);
+        }
+        return className;
+    }
 
-
-
-
-
+    /* ______ */
+    /* Controle de la musique */
+    /* ______ */
 
     private MediaPlayer mediaPlayer;
 
@@ -278,7 +257,5 @@ public class Game {
     public void stopMedia() {
         mediaPlayer.stop();
     }
-
-
 
 }

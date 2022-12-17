@@ -1,7 +1,11 @@
+//***** II.1102 – Algorithmique et Programmation - Projet : Mini RPG Lite 3000 *****
+// ISEP - A1 - G7C
+// Auteur : Charles_Mailley
+// Date de rendu  : 17/12/2022
+
 package com.isep.rpg.hero;
 
 import com.isep.rpg.Combatant;
-import com.isep.rpg.Game;
 import com.isep.rpg.Hero;
 
 public class Hunter extends Hero {
@@ -15,7 +19,10 @@ public class Hunter extends Hero {
         this.addFleches(this.lotFleche);
     }
 
-    public void addFleches(int nbArrows) {this.fleches += nbArrows;}
+    @Override
+    public void iniSac() {
+        super.rempliSacBasique();
+    }
 
     @Override
     public void fight(Combatant cible) {
@@ -25,16 +32,13 @@ public class Hunter extends Hero {
         }
     }
 
+    public void addFleches(int nbArrows) {this.fleches += nbArrows;}
+
     public int getDamage() {return this.weapon.getDps();}
 
     @Override
     public String getPrintMunition() {
         return "Flèches = " + this.fleches;
-    }
-
-    @Override
-    public void iniSac() {
-        super.rempliSacBasique();
     }
 
     @Override
@@ -46,8 +50,5 @@ public class Hunter extends Hero {
             this.addFleches(this.lotFleche);
         }
     }
-
-
-
 
 }

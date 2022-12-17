@@ -1,3 +1,8 @@
+//***** II.1102 – Algorithmique et Programmation - Projet : Mini RPG Lite 3000 *****
+// ISEP - A1 - G7C
+// Auteur : Charles_Mailley
+// Date de rendu  : 17/12/2022
+
 package com.isep.controllers;
 
 import com.isep.MainApplication;
@@ -20,26 +25,17 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
-public class GameController implements Initializable {
-
-
-    @FXML
-    private AnchorPane stage, screenElements;
-    @FXML
-    private ImageView background;
-    private boolean isInit = false;
+public class GameController extends ControlleurBase implements Initializable {
 
     @FXML
     private VBox partHeroes, partEnnemy;
 
     @FXML
     private Label labelRound, labelWave, passageOrder;
-
 
     // Les boites de dialogues
     @FXML
@@ -49,16 +45,17 @@ public class GameController implements Initializable {
     @FXML
     private VBox lstBtnMechants, lstBtnItems;
 
-
     private int nbHeroesPlayed = 0;
     private int numIndexHold = 0;
     private Hero heroTurn;
     private int indexHero;
 
+    private ArrayList<ImageView> lstBlocImageGentil;
+    private ArrayList<ImageView> lstBlocImageMechant;
+
     // Constructeur
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         if (Game.option.getNumRound()==1) {
             Game.option.stopMedia();
             Game.option.playMedia(Utils.MusiqueSource.get("Game"));
@@ -70,7 +67,6 @@ public class GameController implements Initializable {
         // !!!!!! Mettre un boss à la 5 eme Manche !!!!!!
         Game.option.createEnemyWaveArray();
         Game.option.addCopyListHeroes();
-
         // Initialisation des Combattant et les infos de la game sur l'affichage
         try {
             this.setView("Gentils");
@@ -89,9 +85,6 @@ public class GameController implements Initializable {
         this.passageOrder.setText("Ordre du tour : " + Game.option.textPassageOrder());
         this.setHerosTurn();
     }
-
-
-
 
     private void setHerosTurn() {
         // on regarde dans la liste des combattants le premier heros
@@ -118,8 +111,6 @@ public class GameController implements Initializable {
         if (Game.option.isGameOver()) {this.winView();}
         else {this.nextRound();}
     }
-
-
 
     private void nextHero() {
         // Remetre le label affichage selection enemie vide
@@ -154,9 +145,8 @@ public class GameController implements Initializable {
         this.cachebuttonLstMechant();
         this.cachebuttonLstItems();
         this.lableActionBox.setText(this.heroTurn.getName() + " ("+ Utils.getClassName(this.heroTurn.getClass()) + ")");
-
-
     }
+
     @FXML
     private void actionAttk() {
         msgActions.setVisible(false);
@@ -181,7 +171,6 @@ public class GameController implements Initializable {
             }
         }
     }
-
 
     @FXML
     private void actionDef() {
@@ -214,7 +203,6 @@ public class GameController implements Initializable {
         }
     }
 
-
     @FXML
     void validationAttack() {
         // Les ennemys attack avant
@@ -236,7 +224,6 @@ public class GameController implements Initializable {
         this.nextHero();
     }
 
-
     @FXML void validationDefense() {
         // Ajout de la protection
         this.heroTurn.addProtection();
@@ -247,8 +234,8 @@ public class GameController implements Initializable {
         // Prochaine action
         this.refreshScreen();
         this.nextHero();
-
     }
+
     @FXML void validationItem() {
         // Utilisation de l'item choisi
         String nameItem = this.labelItemBox.getText().split(" ")[0];
@@ -266,7 +253,6 @@ public class GameController implements Initializable {
         this.nextHero();
     }
 
-
     private void attaqueEnnemys() {
         for (int pos = this.numIndexHold; pos < this.indexHero; pos++) {
             // Si ce n'est pas un heros mort
@@ -276,8 +262,6 @@ public class GameController implements Initializable {
         }
 
     }
-
-
 
     @FXML
     private void enemyChoose(Event e) {
@@ -305,7 +289,6 @@ public class GameController implements Initializable {
         }
     }
 
-
     private void refreshScreen() {
         // Initialisation des Combattant et les infos de la game sur l'affichage
         try {
@@ -316,17 +299,10 @@ public class GameController implements Initializable {
         }
     }
 
-
-
-
-
     private void changeInfoGame() {
         this.labelRound.setText("Manche : " + Game.option.getNumRound());
         this.labelWave.setText("Vague : " + Game.option.getNumWave());
     }
-
-
-
 
     // Pour les les combattants, on va chercher à les afficher
     private void setView(String nameListCbt) throws IOException {
@@ -387,13 +363,16 @@ public class GameController implements Initializable {
                 txt += " | " + ((Hero) cbt).getPrintMunition();
             }
             label.setText(txt);
-
         }
         //si mechant
         else if (Game.option.getListEnemys().contains(cbt)) {
             label.setText(typeCombattant + ": " + (Game.option.getListEnemys().indexOf(cbt)+1) + "\nPV=" + cbt.getHealthPoint() + " | DPS=" + cbt.getDamage());
         }
     }
+
+
+
+
 
 
     @FXML
@@ -424,6 +403,7 @@ public class GameController implements Initializable {
             throw new RuntimeException(e);
         }
     }
+
     private void looseView() {
         Game.option.stopMedia();
         Game.option.playMedia(Utils.MusiqueSource.get("Loose"));
@@ -435,38 +415,7 @@ public class GameController implements Initializable {
             throw new RuntimeException(e);
         }
     }
-/*
-*
-*
- */
-    @FXML
-    protected void autoResize(){
 
-        if(stage.getWidth()+5 != background.getFitWidth() | stage.getHeight()+5 != background.getFitHeight()) {
-            // Parametre initial non possible dans la fonction init
-            if (!this.isInit) {
-                background.setPreserveRatio(false);
-                ((Stage) stage.getScene().getWindow()).setMinWidth(900);
-                ((Stage) stage.getScene().getWindow()).setMinHeight(500);
-                this.isInit = true;
-            }
-            // Aggrandi l'image au max
-            background.setFitWidth(stage.getWidth());
-            background.setFitHeight(stage.getHeight());
-            // Remet à peu près les elements au centre
-            double midScreenX = stage.getWidth()/2;
-            double midScreenY = stage.getHeight()/2;
-            int AnchorPointX = (int) (midScreenX - screenElements.getWidth()/2);
-            int AnchorPointY = (int) (midScreenY - screenElements.getHeight()/2);
-            screenElements.setLayoutX(AnchorPointX);
-            screenElements.setLayoutY(AnchorPointY);
-
-            // Deplacement du label ordre de passe en base à gauche
-            passageOrder.setLayoutX(10);
-            passageOrder.setLayoutY((int)(stage.getHeight()-passageOrder.getHeight()-5));
-            passageOrder.setMaxWidth((int) stage.getWidth()-15);
-        }
-    }
 }
 
 

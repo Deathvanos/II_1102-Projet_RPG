@@ -1,12 +1,14 @@
+//***** II.1102 – Algorithmique et Programmation - Projet : Mini RPG Lite 3000 *****
+// ISEP - A1 - G7C
+// Auteur : Charles_Mailley
+// Date de rendu  : 17/12/2022
+
 package com.isep.rpg.hero;
+
 import com.isep.rpg.Combatant;
 import com.isep.rpg.SpellCaster;
 
-
 public class Healer extends SpellCaster {
-
-
-
 
     public Healer(String n) {
         super(n, 600);
@@ -14,7 +16,10 @@ public class Healer extends SpellCaster {
         this.iniSac();
     }
 
-
+    @Override
+    public void iniSac() {
+        super.rempliSacBasique();
+    }
     @Override
     public void fight(Combatant cible) {
         if (super.getMana() > 0) {
@@ -26,18 +31,7 @@ public class Healer extends SpellCaster {
     @Override
     public int getDamage() {return super.weapon.getDps();}
 
-
     @Override
-    public String getPrintMunition() {
-        return "Mana = " + super.getMana();
-    }
-
-    @Override
-    public void iniSac() {
-        super.rempliSacBasique();
-    }
-
-
-
+    public String getPrintMunition() { return "Mana = " + super.getMana();}
 
 }
