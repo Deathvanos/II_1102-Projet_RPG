@@ -8,6 +8,6 @@ import com.isep.rpg.Weapon;
 
 public class Arc extends Weapon {
     public Arc() {
-        super("Arc", 45);
+        super("Arc", 75);
     }
 }

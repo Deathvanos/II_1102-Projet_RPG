@@ -22,7 +22,7 @@ public class ControlleurBase {
 
     @FXML
     protected void autoResize(){
-        if(stage.getWidth()+5 != background.getFitWidth() | stage.getHeight()+5 != background.getFitHeight()) {
+        if(stage.getWidth() != background.getFitWidth() | stage.getHeight() != background.getFitHeight()) {
             // Parametre initial non possible dans la fonction init
             if (!this.isInit) {
                 background.setPreserveRatio(false);

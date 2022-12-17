@@ -9,6 +9,6 @@ import com.isep.rpg.Food;
 
 public class Pain extends Food {
     public Pain() {
-        super(40, "Pain");
+        super(160, "Pain");
     }
 }

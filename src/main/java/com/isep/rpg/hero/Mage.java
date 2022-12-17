@@ -12,7 +12,7 @@ public class Mage extends SpellCaster {
 
     public Mage(String n) {
         super(n, 400);
-        super.regenMana(100);
+        super.regenMana(50);
         this.iniSac();
     }
 

@@ -18,29 +18,28 @@
             <Image url="@../images/Backgrounds/fantasy/Battleground12.png" />
          </image>
       </ImageView>
+      <Label id="labelManche" fx:id="labelRound" alignment="BOTTOM_CENTER" contentDisplay="BOTTOM" layoutX="14.0" layoutY="12.0" text="Manche 1" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Label>
+      <Label id="labelWave" fx:id="labelWave" alignment="BOTTOM_CENTER" contentDisplay="BOTTOM" layoutX="230.0" layoutY="22.0" text="Vague 3" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Label id="labelOrderAttack" fx:id="passageOrder" layoutX="10.0" layoutY="463.0" maxWidth="880.0" prefWidth="880.0" text="Ordre du tour :" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
       <AnchorPane fx:id="screenElements" prefHeight="500.0" prefWidth="900.0">
          <children>
-            <Button id="buttonBack" layoutX="742.0" layoutY="20.0" mnemonicParsing="false" onAction="#onBackButtonClick" text="Déclarer la défaite" />
-            <Label id="labelManche" fx:id="labelRound" alignment="BOTTOM_CENTER" contentDisplay="BOTTOM" layoutX="14.0" layoutY="20.0" text="Manche 1" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font size="48.0" />
-               </font>
-            </Label>
-            <Label id="labelWave" fx:id="labelWave" alignment="BOTTOM_CENTER" contentDisplay="BOTTOM" layoutX="220.0" layoutY="26.0" text="Vague 3" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font size="36.0" />
-               </font>
-            </Label>
-            <Label id="labelOrderAttack" fx:id="passageOrder" layoutX="3.0" layoutY="464.0" maxWidth="880.0" prefWidth="880.0" text="Ordre du tour :" textFill="WHITE">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <VBox id="labelHeros" fx:id="partHeroes" alignment="CENTER" layoutY="230.0">
+            <VBox id="labelHeros" fx:id="partHeroes" alignment="CENTER" layoutX="45.0" layoutY="247.0">
                <children>
-                  <HBox id="partHerosStage1" alignment="CENTER">
+                  <HBox alignment="CENTER">
                      <children>
-                        <VBox id="hero6" fx:id="hero6" alignment="CENTER">
+                        <VBox fx:id="hero6" alignment="CENTER">
                            <children>
                               <ImageView id="hero6Img" fx:id="hero6Img" fitHeight="100.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -53,7 +52,7 @@
                               <Insets />
                            </HBox.margin>
                         </VBox>
-                        <VBox id="hero3" alignment="CENTER">
+                        <VBox alignment="CENTER">
                            <children>
                               <ImageView id="labelHeros" fx:id="hero3Img" fitHeight="100.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                  <image>
@@ -71,9 +70,9 @@
                         <Insets />
                      </VBox.margin>
                   </HBox>
-                  <HBox id="partHerosStage2" alignment="CENTER">
+                  <HBox alignment="CENTER">
                      <children>
-                        <VBox id="hero4" alignment="CENTER">
+                        <VBox alignment="CENTER">
                            <children>
                               <ImageView id="hero4Img" fx:id="hero1Img1113" fitHeight="100.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                  <image>
@@ -86,7 +85,7 @@
                               <Insets />
                            </HBox.margin>
                         </VBox>
-                        <VBox id="hero1" alignment="CENTER">
+                        <VBox alignment="CENTER">
                            <children>
                               <ImageView id="hero1Img" fx:id="hero1Img" fitHeight="100.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                  <image>
@@ -104,29 +103,29 @@
                         <Insets />
                      </VBox.margin>
                   </HBox>
-                  <HBox id="partHerosStage3" alignment="CENTER">
+                  <HBox alignment="CENTER">
                      <children>
-                        <VBox id="labelHeros" alignment="CENTER">
+                        <VBox alignment="CENTER">
                            <children>
                               <ImageView id="hero5Img" fx:id="hero1Img1117" fitHeight="100.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                  <image>
                                     <Image url="@../images/shadow.png" />
                                  </image>
                               </ImageView>
-                              <Label id="heroTurn" fx:id="hero5Info" contentDisplay="CENTER" />
+                              <Label id="labelHeros" fx:id="hero5Info" contentDisplay="CENTER" />
                            </children>
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
                         </VBox>
-                        <VBox id="labelHeros" alignment="CENTER">
+                        <VBox alignment="CENTER">
                            <children>
                               <ImageView id="hero2Img" fx:id="hero2Img" fitHeight="100.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                  <image>
                                     <Image url="@../images/shadow.png" />
                                  </image>
                               </ImageView>
-                              <Label id="heroTurn" fx:id="hero2Info" contentDisplay="CENTER" />
+                              <Label id="labelHeros" fx:id="hero2Info" contentDisplay="CENTER" />
                            </children>
                            <HBox.margin>
                               <Insets />
@@ -141,9 +140,9 @@
             </VBox>
             <VBox id="partEnnemy" fx:id="partEnnemy" alignment="CENTER" layoutX="621.0" layoutY="230.0">
                <children>
-                  <HBox id="partEnnemyStage1" alignment="CENTER">
+                  <HBox alignment="CENTER">
                      <children>
-                        <VBox id="ennemy3" alignment="CENTER">
+                        <VBox alignment="CENTER">
                            <children>
                               <ImageView id="hero1Img" fx:id="hero1Img11141" fitHeight="100.0" fitWidth="75.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -156,7 +155,7 @@
                               <Insets />
                            </HBox.margin>
                         </VBox>
-                        <VBox id="ennemy6" alignment="CENTER">
+                        <VBox alignment="CENTER">
                            <children>
                               <ImageView id="hero1Img" fx:id="hero1Img11151" fitHeight="100.0" fitWidth="75.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" visible="false">
                                  <image>
@@ -174,9 +173,9 @@
                         <Insets />
                      </VBox.margin>
                   </HBox>
-                  <HBox id="partEnnemyStage2" alignment="CENTER">
+                  <HBox alignment="CENTER">
                      <children>
-                        <VBox id="ennemy1" alignment="CENTER">
+                        <VBox alignment="CENTER">
                            <children>
                               <ImageView id="hero1Img" fx:id="hero1Img11131" fitHeight="100.0" fitWidth="75.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" visible="false">
                                  <image>
@@ -189,7 +188,7 @@
                               <Insets />
                            </HBox.margin>
                         </VBox>
-                        <VBox id="ennemy4" alignment="CENTER">
+                        <VBox alignment="CENTER">
                            <children>
                               <ImageView id="hero1Img" fx:id="hero1Img11161" fitHeight="100.0" fitWidth="75.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" visible="false">
                                  <image>
@@ -207,22 +206,22 @@
                         <Insets />
                      </VBox.margin>
                   </HBox>
-                  <HBox id="partEnnemyStage3" alignment="CENTER">
+                  <HBox alignment="CENTER">
                      <children>
-                        <VBox id="ennemy2" alignment="CENTER">
+                        <VBox alignment="CENTER">
                            <children>
                               <ImageView id="hero1Img" fx:id="hero1Img11171" fitHeight="100.0" fitWidth="75.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" visible="false">
                                  <image>
                                     <Image url="@../images/shadow.png" />
                                  </image>
                               </ImageView>
-                              <Label id="heroTurn" fx:id="hero1Info11171" contentDisplay="CENTER" />
+                              <Label id="labelHeros" fx:id="hero1Info11171" contentDisplay="CENTER" />
                            </children>
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
                         </VBox>
-                        <VBox id="ennemy5" alignment="CENTER">
+                        <VBox alignment="CENTER">
                            <children>
                               <ImageView id="hero1Img" fx:id="hero1Img11121" fitHeight="100.0" fitWidth="75.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" visible="false">
                                  <image>
@@ -369,6 +368,7 @@
             </AnchorPane>
          </children>
       </AnchorPane>
+      <Button id="buttonBack" fx:id="menuP" layoutX="737.0" layoutY="14.0" mnemonicParsing="false" onAction="#onBackButtonClick" text="Déclarer la défaite" />
    </children>
    <stylesheets>
       <URL value="@../css/common-style.css" />

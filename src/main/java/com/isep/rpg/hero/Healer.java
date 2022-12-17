@@ -12,7 +12,7 @@ public class Healer extends SpellCaster {
 
     public Healer(String n) {
         super(n, 600);
-        super.regenMana(200);
+        super.regenMana(80);
         this.iniSac();
     }
 

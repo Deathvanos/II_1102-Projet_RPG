@@ -35,6 +35,9 @@ public class GameController extends ControlleurBase implements Initializable {
     private VBox partHeroes, partEnnemy;
 
     @FXML
+    private Button menuP;
+
+    @FXML
     private Label labelRound, labelWave, passageOrder;
 
     // Les boites de dialogues
@@ -50,8 +53,8 @@ public class GameController extends ControlleurBase implements Initializable {
     private Hero heroTurn;
     private int indexHero;
 
-    private ArrayList<ImageView> lstBlocImageGentil;
-    private ArrayList<ImageView> lstBlocImageMechant;
+    private ArrayList<VBox> lstBlocImageGentil = new ArrayList<>();
+    private ArrayList<VBox> lstBlocImageMechant = new ArrayList<>();
 
     // Constructeur
     @Override
@@ -68,12 +71,10 @@ public class GameController extends ControlleurBase implements Initializable {
         Game.option.createEnemyWaveArray();
         Game.option.addCopyListHeroes();
         // Initialisation des Combattant et les infos de la game sur l'affichage
-        try {
-            this.setView("Gentils");
-            this.setView("Ennemy");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        implementBoxToCombattant(this.partHeroes, this.lstBlocImageGentil);
+        implementBoxToCombattant(this.partEnnemy, this.lstBlocImageMechant);
+        this.refreshScreen();
+        // DDébut de la manche
         this.newWave();
     }
 
@@ -99,6 +100,7 @@ public class GameController extends ControlleurBase implements Initializable {
             } else if (Game.option.getListHeroes().contains(Game.option.getListCombatants().get(pos))) {
                 this.heroTurn = (Hero) Game.option.getListCombatants().get(pos);
                 this.indexHero = pos;
+                //this.setImageAttkGentilCbt(this.heroTurn);
                 this.actionBox();
                 return;
             }
@@ -121,7 +123,7 @@ public class GameController extends ControlleurBase implements Initializable {
             // Les derniers enemys peuvent attaquer
             this.indexHero = Game.option.getListCombatants().size();
             this.attaqueEnnemys();
-            this.refreshScreen();
+
 
             // Vague suivante : on remet les compteurs à 0
             this.nbHeroesPlayed = 0;
@@ -134,6 +136,7 @@ public class GameController extends ControlleurBase implements Initializable {
             this.numIndexHold++;
             this.setHerosTurn();
         }
+        this.refreshScreen();
     }
 
     @FXML
@@ -220,7 +223,7 @@ public class GameController extends ControlleurBase implements Initializable {
             }
         }
         // Prochaine action
-        this.refreshScreen();
+        //this.refreshScreen();
         this.nextHero();
     }
 
@@ -232,7 +235,6 @@ public class GameController extends ControlleurBase implements Initializable {
         // Fin de la protectino
         this.heroTurn.looseProctection();
         // Prochaine action
-        this.refreshScreen();
         this.nextHero();
     }
 
@@ -249,7 +251,6 @@ public class GameController extends ControlleurBase implements Initializable {
         // Les ennemys attack après
         this.attaqueEnnemys();
         // Prochaine action
-        this.refreshScreen();
         this.nextHero();
     }
 
@@ -290,13 +291,8 @@ public class GameController extends ControlleurBase implements Initializable {
     }
 
     private void refreshScreen() {
-        // Initialisation des Combattant et les infos de la game sur l'affichage
-        try {
-            this.setView("Gentils");
-            this.setView("Ennemy");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        setView(Game.option.getListHeroes(), this.lstBlocImageGentil);
+        setView(Game.option.getListEnemys(), this.lstBlocImageMechant);
     }
 
     private void changeInfoGame() {
@@ -304,56 +300,59 @@ public class GameController extends ControlleurBase implements Initializable {
         this.labelWave.setText("Vague : " + Game.option.getNumWave());
     }
 
-    // Pour les les combattants, on va chercher à les afficher
-    private void setView(String nameListCbt) throws IOException {
-        // Recuperation de la VBox du camp
-        ObservableList<Node> campCombattant;
-        ArrayList<Combatant> listCbt;
-        if (Objects.equals(nameListCbt, "Gentils")) {
-            campCombattant = this.partHeroes.getChildren();
-            listCbt = Game.option.getListHeroes();
-        }
-        else if (Objects.equals(nameListCbt, "Ennemy")) {
-            campCombattant = this.partEnnemy.getChildren();
-            listCbt = Game.option.getListEnemys();
-        }
-        else return;
-        // Nombre temoin de heros qu'on a ajouté sur l'ecran
-        int nbCombattantplaced = 0;
-        // Parcourir et recuperer tous les enfants et petits enfant de cette VBox
-        for (Node hbox : campCombattant) {
+    private void implementBoxToCombattant(VBox partCamp, ArrayList<VBox> listblocInfoCbt) {
+        // Recupere les ImagesView et Label de chaque combattant dans une liste
+        for (Node hbox : partCamp.getChildren()) {
             for (Node vbox : ((HBox) hbox).getChildren()) {
-                ImageView img = (ImageView) ((VBox) vbox).getChildren().get(0);
-                Label label = (Label) ((VBox) vbox).getChildren().get(1);
-
-                if (nbCombattantplaced<listCbt.size()) {
-                    // On affiche un hero
-                    this.addCbtToScreen(img, label, listCbt, nbCombattantplaced);
-                }
-                else {
-                    // Il n'y a plus de conbattant
-                    label.setText("");
-                    img.setImage(Utils.setAnImage(Utils.ImageBaseSource.get("Shadow")));
-                    img.setFitWidth(Utils.ImageSize.get("Shadow").get(0));
-                    img.setFitHeight(Utils.ImageSize.get("Shadow").get(1));
-                }
-                // Incrementation du nombre de heros affiché et on regarde s'il ont tous été afficher
-                nbCombattantplaced++;
+                listblocInfoCbt.add((VBox) vbox);
             }
+        }
+
+    }
+
+    private void cleanScreenImg(ArrayList<VBox> cadreCbt) {
+        for (VBox box: cadreCbt) {
+            // Recuperation des elements
+            ImageView img = (ImageView) box.getChildren().get(0);
+            Label label = (Label) box.getChildren().get(1);
+            // Mise à blanc des elements
+            label.setText("");
+            try {
+                img.setImage(Utils.setAnImage(Utils.ImageIdleSource.get("Shadow")));
+                img.setFitWidth(Utils.ImageSize.get("Shadow").get(0));
+                img.setFitHeight(Utils.ImageSize.get("Shadow").get(1));
+            } catch (IOException ignored) {}
+        }
+    }
+
+    // Pour les les combattants, on va chercher à les afficher
+    private void setView(ArrayList<Combatant> listCamp, ArrayList<VBox> listInfo) {
+        // Vide l'ecran
+        this.cleanScreenImg(listInfo);
+        // Remet les combattant encore vivant
+        for (int posCbt = 0; posCbt < listCamp.size(); posCbt++) {
+            // Recuperation de la boite d'affichage Combattant, sa boite image et boite label
+            ObservableList<Node> blocInfoCbt = listInfo.get(posCbt).getChildren();
+            ImageView img = (ImageView) blocInfoCbt.get(0);
+            Label label = (Label) blocInfoCbt.get(1);
+            // Recuperation du combattant
+            Combatant cbt = listCamp.get(posCbt);
+
+            this.addCbtToScreen(img, label, cbt);
         }
     }
 
     // On afficher un combattant sur l'ecran
-    private void addCbtToScreen(ImageView img, Label label, ArrayList<Combatant> listCbt, int arrayPos) throws IOException {
-        // Recuperation du Combattant
-        Combatant cbt = listCbt.get(arrayPos);
+    private void addCbtToScreen(ImageView img, Label label, Combatant cbt) {
         // Recuperation de la class du combattant
         String typeCombattant = Utils.getClassName(cbt.getClass());
-        // nom de l'image
-        img.setVisible(true);
-        img.setImage(Utils.setAnImage(Utils.ImageBaseSource.get(typeCombattant)));
-        img.setFitWidth(Utils.ImageSize.get(typeCombattant).get(0));
-        img.setFitHeight(Utils.ImageSize.get(typeCombattant).get(1));
+        // On affiche l'image du combattant
+        try {
+            img.setVisible(true);
+            img.setImage(Utils.setAnImage(Utils.ImageIdleSource.get(typeCombattant)));
+            img.setFitWidth(Utils.ImageSize.get(typeCombattant).get(0));
+            img.setFitHeight(Utils.ImageSize.get(typeCombattant).get(1));
+        } catch (IOException ignored) {}
         // Ajout de ses infos
         // si gentils
         if (Game.option.getListHeroes().contains(cbt)) {
@@ -371,9 +370,16 @@ public class GameController extends ControlleurBase implements Initializable {
     }
 
 
-
-
-
+    private void setImageAttkGentilCbt(Combatant cbt) {
+        String typeCombattant = Utils.getClassName(cbt.getClass());
+        ImageView img = (ImageView) this.lstBlocImageGentil.get(Game.option.getListHeroes().indexOf(cbt)).getChildren().get(0);
+        try {
+            img.setVisible(true);
+            img.setImage(Utils.setAnImage(Utils.ImageAttackSource.get(typeCombattant)));
+            img.setFitWidth(Utils.ImageSize.get(typeCombattant).get(0));
+            img.setFitHeight(Utils.ImageSize.get(typeCombattant).get(1));
+        } catch (IOException ignored) {}
+    }
 
     @FXML
     protected void onBackButtonClick() throws IOException {
@@ -416,6 +422,20 @@ public class GameController extends ControlleurBase implements Initializable {
         }
     }
 
+    @Override
+    protected void autoResize() {
+        super.autoResize();
+        // Deplacement du label ordre de passe en base à gauche
+        passageOrder.setLayoutY((int)(stage.getHeight()-passageOrder.getHeight()-5));
+        passageOrder.setMaxWidth((int) stage.getWidth()-15);
+        //Deplacement du bouton menu
+        menuP.setLayoutX((int) stage.getWidth()-165);
+    }
+
 }
 
 
+/*
+* Quand c'est au tour d'un hero on lui change l'image
+* L'image reviendra à la normal apres avoir jouer
+ */

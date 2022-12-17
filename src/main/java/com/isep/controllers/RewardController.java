@@ -45,7 +45,7 @@ public class RewardController extends ControlleurBase {
         String typeCombattant = Utils.getClassName(heros.getClass());
         // Met l'image du 1er heros
         try {
-            heroImg.setImage(Utils.setAnImage(Utils.ImageBaseSource.get(typeCombattant)));
+            heroImg.setImage(Utils.setAnImage(Utils.ImageIdleSource.get(typeCombattant)));
             heroImg.setFitWidth(Utils.ImageSize.get(typeCombattant).get(0));
             heroImg.setFitHeight(Utils.ImageSize.get(typeCombattant).get(1));
         } catch (IOException e) {

@@ -11,7 +11,7 @@ import com.isep.rpg.Hero;
 public class Hunter extends Hero {
 
     private int fleches;
-    private final int lotFleche = 15;
+    private final int lotFleche = 10;
 
     public Hunter(String n) {
         super(n, 450);
