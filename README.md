@@ -1,8 +1,14 @@
-# II.1102 – Algorithmique et Programmation 
-## Projet : Mini RPG Lite 3000.
-### Auteur : Charles_Mailley
-ISEP - A1 - G7C  
-Date de rendu  : 17/12/2022  
-Version interface graphique avec Maven
-  
-MainApplication présent dans : src.main.java.com.isep est le fichier permettant l'execution du programme.
+# Projet : Mini RPG Lite 3000.
+
+Ce projet a été développé en Java 17 et utilise JavaFX pour l'interface graphique.
+
+> Bienvenue dans Mini RPG Lite 3000, le plus simple des RPGs. Êtes-vous une bande de jeunes
+héros prêts à relever tous les défi s ? C’est parti!
+Votre objectif est de vaincre tous vos ennemis. Chaque combat gagné vous fait progresser et
+aff ronter des monstres encore plus terrifi ants.
+
+
+Pour excuter le code:
+* Ouvrir avec IntelliJ
+* Ouvrir le script dans : src/main/java/com/isep/MainApplication.java
+* Executez le (run)

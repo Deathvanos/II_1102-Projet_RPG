@@ -74,7 +74,7 @@ public class Game {
     public void addRound() {this.numRound++;}
 
     /* ______ */
-    /* Methodes de Class Game */
+    /* Methodes de Class la Game */
     /* ______ */
     public void addHeros(String NameClass, String nameHero) {
         switch (NameClass) {
